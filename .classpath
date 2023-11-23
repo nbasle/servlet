@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="hellops"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/mysql-connector.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/lib/httpunit.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/js.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/junit.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/xmlParserAPIs.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/nekohtml.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/servlet.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/Tidy.jar"/>
+	<classpathentry kind="lib" path="D:/PROJET/CNAM/TP06/servlet/lib/httpunit-1.6/jars/xercesImpl.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<project name="Hello PetStore" default="core" basedir=".">
+
+    <!-- path to root -->
+    <property name="home.dir" value="."/>
+    <property name="classes.dir" value="${home.dir}/classes"/>
+    <property name="src.dir" value="${home.dir}"/>
+    <property name="config.dir" value="${home.dir}"/>
+    <property name="lib.dir" value="${home.dir}/../lib"/>
+    <property name="build.dir" value="${home.dir}/build"/>
+    <property name="deploy.dir" value="${home.dir}"/>
+
+    <!-- Files -->
+    <property name="web.war" value="${build.dir}/hellops.war"/>
+
+    <!-- External application -->
+    <property name="tomcat.home" value="C:/WebServers/Tomcat5.5.15"/>
+    <property name="tomcat.deploy.dir" value="${tomcat.home}/webapps"/>
+
+    <path id="classpath">
+        <pathelement location="${classes.dir}"/>
+        <pathelement location="${lib.dir}/servlet-api.jar"/>
+    </path>
+
+    <!-- Removes the build directory -->
+    <target name="clean">
+        <echo message="Cleans the environment"/>
+        <delete dir="${classes.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Compiles source code -->
+    <target name="compile">
+        <echo message="Compiles java classes"/>
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}"
+            destdir="${classes.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <!-- Creates the webapp war file -->
+    <target name="war" depends="compile">
+        <mkdir dir="${build.dir}"/>
+        <echo message="Creates the Hello PetStore Web Application"/>
+        <war destfile="${web.war}" webxml="${deploy.dir}/web.xml">
+            <classes dir="${classes.dir}"/>
+        </war>
+    </target>
+
+    <!-- Creates the webapp war file -->
+    <target name="deploy" depends="war">
+        <copy file="${web.war}" todir="${tomcat.deploy.dir}"/>
+    </target>
+
+    <!-- Main targets -->
+    <target name="core" depends="clean,war"/>
+
+</project>

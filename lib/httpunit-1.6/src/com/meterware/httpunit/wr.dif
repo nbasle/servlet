@@ -1,0 +1,37 @@
+Index: WebResponse.java
+===================================================================
+RCS file: /cvsroot/httpunit/httpunit/src/com/meterware/httpunit/WebResponse.java,v
+retrieving revision 1.110
+diff -u -r1.110 WebResponse.java
+--- WebResponse.java	23 Feb 2003 20:03:38 -0000	1.110
++++ WebResponse.java	6 Mar 2003 11:43:31 -0000
+@@ -544,6 +544,10 @@
+
+         public HTMLPage.Scriptable getDocument() {
+             try {
++                // Allow a GIF response to be treated as an empty document
++                if (getContentType().equalsIgnoreCase("image/gif")) {
++                    replaceText(BLANK_HTML, HTML_CONTENT);
++                }
+                 return getReceivedPage().getScriptableObject();
+             } catch (SAXException e) {
+                 throw new RuntimeException( e.toString() );
+@@ -736,6 +740,19 @@
+         _inputStream = null;
+         _page = null;
+         _contentType = contentType;
++
++        // Reprocess tags present in new content
++        _baseURL = null;
++        _baseTarget = null;
++        _refreshHeader = null;
++        _hasSubframes = false;
++        try {
++            readTags(text.getBytes());
++        } catch (UnsupportedEncodingException e) {
++            throw new RuntimeException("UnsupportedEncodingException attempting to re-parse new text: "+ e.getMessage());
++        } catch (MalformedURLException e) {
++            throw new RuntimeException("MalformedURLException attempting to re-parse new text: "+ e.getMessage());
++        }
+     }
+
